@@ -83,11 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Episode cards ---------- */
   const toast = document.getElementById('toast');
+  const toastText = toast.querySelector('p');
+  const toastLink = toast.querySelector('a');
   let toastTimer;
-  function showToast() {
+  function showToast(message, linkHref, linkText) {
     clearTimeout(toastTimer);
+    toastText.innerHTML = message;
+    if (linkHref) {
+      toastLink.style.display = 'inline';
+      toastLink.href = linkHref;
+      toastLink.textContent = linkText || 'Learn more →';
+    } else {
+      toastLink.style.display = 'none';
+    }
     toast.classList.add('is-visible');
-    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 4200);
+    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 4500);
   }
 
   document.querySelectorAll('.ep-card').forEach(card => {
@@ -95,11 +105,105 @@ document.addEventListener('DOMContentLoaded', () => {
       const link = card.getAttribute('data-link');
       const isSoon = card.getAttribute('data-soon') === 'true';
       if (isSoon) {
-        showToast();
+        showToast('This episode is <strong>coming soon</strong> — follow on LinkedIn for updates.', 'https://www.linkedin.com/company/ladies-leadership-logistics/', 'Visit LinkedIn →');
       } else if (link) {
         window.open(link, '_blank', 'noopener');
       }
     });
   });
+
+  /* ---------- Star rating ---------- */
+  const starRating = document.getElementById('starRating');
+  const ratingValue = document.getElementById('ratingValue');
+  if (starRating) {
+    const stars = Array.from(starRating.querySelectorAll('.star'));
+
+    function paintStars(count) {
+      stars.forEach(s => {
+        const active = Number(s.dataset.value) <= count;
+        s.classList.toggle('is-hover', active);
+      });
+    }
+    function setActive(count) {
+      stars.forEach(s => {
+        const active = Number(s.dataset.value) <= count;
+        s.classList.toggle('is-active', active);
+        s.setAttribute('aria-checked', active ? 'true' : 'false');
+      });
+    }
+
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => paintStars(Number(star.dataset.value)));
+      star.addEventListener('focus', () => paintStars(Number(star.dataset.value)));
+      star.addEventListener('click', () => {
+        const value = Number(star.dataset.value);
+        ratingValue.value = value;
+        setActive(value);
+      });
+    });
+    starRating.addEventListener('mouseleave', () => paintStars(Number(ratingValue.value)));
+  }
+
+  /* ---------- Feedback form (opens mail client) ---------- */
+  const feedbackForm = document.getElementById('feedbackForm');
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const rating = Number(ratingValue.value);
+      const name = feedbackForm.name.value.trim();
+      const message = feedbackForm.message.value.trim();
+
+      if (rating === 0) {
+        showToast('Please choose a star rating before sending your feedback.', null, null);
+        return;
+      }
+      if (!message) {
+        showToast('Please add a short message so we know what you loved.', null, null);
+        return;
+      }
+
+      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const subject = encodeURIComponent(`Podcast Feedback — ${rating}/5 stars`);
+      const body = encodeURIComponent(
+        `Rating: ${stars} (${rating}/5)\n` +
+        (name ? `Name: ${name}\n` : '') +
+        `\nFeedback:\n${message}`
+      );
+      window.location.href = `mailto:ladiesleadershiplogistics@gmail.com?subject=${subject}&body=${body}`;
+    });
+  }
+
+  /* ---------- Guest request form (opens mail client) ---------- */
+  const guestForm = document.getElementById('guestForm');
+  if (guestForm) {
+    guestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = guestForm.name.value.trim();
+      const email = guestForm.email.value.trim();
+      const message = guestForm.message.value.trim();
+
+      if (!name || !email || !message) {
+        showToast('Please fill in your name, email, and a short note before sending.', null, null);
+        return;
+      }
+
+      const subject = encodeURIComponent(`Guest Request — ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\nAbout them / pitch:\n${message}`
+      );
+      window.location.href = `mailto:ladiesleadershiplogistics@gmail.com?subject=${subject}&body=${body}`;
+    });
+  }
+
+  /* ---------- WhatsApp community link (placeholder until real link is added) ---------- */
+  const whatsappLink = document.getElementById('whatsappLink');
+  if (whatsappLink) {
+    whatsappLink.addEventListener('click', (e) => {
+      if (whatsappLink.getAttribute('href') === '#') {
+        e.preventDefault();
+        showToast('Our WhatsApp community link is <strong>coming soon</strong> — check back shortly.', null, null);
+      }
+    });
+  }
 
 });

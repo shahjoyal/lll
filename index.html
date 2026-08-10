@@ -38,7 +38,7 @@
       <a href="#about" data-nav>About the Show</a>
       <a href="#founder" data-nav>Founder</a>
       <a href="#episodes" data-nav>Episodes</a>
-      <a href="#contact" data-nav>Contact</a>
+      <a href="#connect" data-nav>Contact</a>
     </nav>
 
     <a class="nav__cta" href="https://www.youtube.com/@LadiesLeadershipLogistics" target="_blank" rel="noopener">
@@ -181,43 +181,174 @@
   <div class="section-inner">
     <p class="eyebrow reveal-up">Recent Conversations</p>
     <h2 class="section-title reveal-up">On the Show</h2>
-    <p class="episodes__sub reveal-up">Tap a card to watch.</p>
+    <p class="episodes__sub reveal-up">Five stops on the route so far — tap a card to watch.</p>
 
-    <div class="episodes__grid">
-      <button class="ep-card reveal-up" data-float="0" data-link="https://www.linkedin.com/company/ladies-leadership-logistics/" data-soon="true" style="--img:url('img1.png')">
+    <div class="episodes__viewport reveal-up">
+    <div class="episodes__track" id="episodesTrack">
+
+      <button class="ep-card" data-link="https://www.linkedin.com/company/ladies-leadership-logistics/" data-soon="true" style="--img:url('img1.png')">
         <span class="ep-card__badge ep-card__badge--soon">Coming Soon</span>
         <span class="ep-card__num">Episode 01</span>
         <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </button>
 
-      <button class="ep-card reveal-up" data-float="1" data-link="https://youtu.be/iwxwCdu4g3g?si=X7bp7B9qW0SMhaNh" style="--img:url('img2.png')">
+      <button class="ep-card" data-link="https://youtu.be/iwxwCdu4g3g?si=X7bp7B9qW0SMhaNh" style="--img:url('img2.png')">
         <span class="ep-card__num">Episode 02</span>
         <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </button>
 
-      <button class="ep-card reveal-up" data-float="2" data-link="https://youtu.be/wBAXHxrWQMU?si=DpIGAnzbYPe_4KFt" style="--img:url('img3.png')">
+      <button class="ep-card" data-link="https://youtu.be/wBAXHxrWQMU?si=DpIGAnzbYPe_4KFt" style="--img:url('img3.png')">
         <span class="ep-card__num">Episode 03</span>
         <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </button>
 
-      <button class="ep-card reveal-up" data-float="3" data-link="https://youtu.be/VEuzWXwGv-4?si=KWw4QB1vPbTa4KIL" style="--img:url('img4.png')">
+      <button class="ep-card" data-link="https://youtu.be/VEuzWXwGv-4?si=KWw4QB1vPbTa4KIL" style="--img:url('img4.png')">
         <span class="ep-card__num">Episode 04</span>
         <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </button>
 
-      <button class="ep-card reveal-up" data-float="4" data-link="https://youtu.be/o2Nk9-ZjrSE?si=X-4_xXxJ5IspJ7cD" style="--img:url('img5.png')">
+      <button class="ep-card" data-link="https://youtu.be/o2Nk9-ZjrSE?si=X-4_xXxJ5IspJ7cD" style="--img:url('img5.png')">
         <span class="ep-card__num">Episode 05</span>
         <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </button>
+
+      <!-- duplicated set for seamless infinite loop -->
+      <button class="ep-card" aria-hidden="true" tabindex="-1" data-link="https://www.linkedin.com/company/ladies-leadership-logistics/" data-soon="true" style="--img:url('img1.png')">
+        <span class="ep-card__badge ep-card__badge--soon">Coming Soon</span>
+        <span class="ep-card__num">Episode 01</span>
+        <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+
+      <button class="ep-card" aria-hidden="true" tabindex="-1" data-link="https://youtu.be/iwxwCdu4g3g?si=X7bp7B9qW0SMhaNh" style="--img:url('img2.png')">
+        <span class="ep-card__num">Episode 02</span>
+        <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+
+      <button class="ep-card" aria-hidden="true" tabindex="-1" data-link="https://youtu.be/wBAXHxrWQMU?si=DpIGAnzbYPe_4KFt" style="--img:url('img3.png')">
+        <span class="ep-card__num">Episode 03</span>
+        <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+
+      <button class="ep-card" aria-hidden="true" tabindex="-1" data-link="https://youtu.be/VEuzWXwGv-4?si=KWw4QB1vPbTa4KIL" style="--img:url('img4.png')">
+        <span class="ep-card__num">Episode 04</span>
+        <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+
+      <button class="ep-card" aria-hidden="true" tabindex="-1" data-link="https://youtu.be/o2Nk9-ZjrSE?si=X-4_xXxJ5IspJ7cD" style="--img:url('img5.png')">
+        <span class="ep-card__num">Episode 05</span>
+        <span class="ep-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+
+    </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CONTACT / FOOTER ===== -->
-<footer class="footer" id="contact">
+<!-- ===== CONNECT ===== -->
+<section class="connect" id="connect">
+  <div class="section-inner">
+    <p class="eyebrow reveal-up">Get Involved</p>
+    <h2 class="section-title reveal-up">Let's Connect</h2>
+    <p class="connect__sub reveal-up">Share feedback, pitch yourself as a guest, or just say hello.</p>
+
+    <div class="connect__grid">
+      <div class="connect__card reveal-up">
+        <h3 class="connect__card-title">Share Your Feedback</h3>
+        <p class="connect__card-copy">Loved an episode? Tell us what resonated — it shapes what we make next.</p>
+
+        <form class="connect__form" id="feedbackForm" novalidate>
+          <div class="star-field">
+            <span class="star-field__label">Your rating</span>
+            <div class="star-rating" id="starRating" role="radiogroup" aria-label="Rate the show">
+              <button type="button" class="star" data-value="1" aria-label="1 star" role="radio" aria-checked="false">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </button>
+              <button type="button" class="star" data-value="2" aria-label="2 stars" role="radio" aria-checked="false">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </button>
+              <button type="button" class="star" data-value="3" aria-label="3 stars" role="radio" aria-checked="false">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </button>
+              <button type="button" class="star" data-value="4" aria-label="4 stars" role="radio" aria-checked="false">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </button>
+              <button type="button" class="star" data-value="5" aria-label="5 stars" role="radio" aria-checked="false">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </button>
+            </div>
+            <input type="hidden" name="rating" id="ratingValue" value="0">
+          </div>
+
+          <label class="connect__field">
+            <span>Name (optional)</span>
+            <input type="text" name="name" placeholder="Your name">
+          </label>
+
+          <label class="connect__field">
+            <span>Your feedback</span>
+            <textarea name="message" rows="3" placeholder="What did you think?" required></textarea>
+          </label>
+
+          <button type="submit" class="btn btn--gold connect__submit">
+            <span>Send Feedback</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="connect__hint">Opens your email app so you can send it straight to us.</p>
+        </form>
+      </div>
+
+      <div class="connect__card reveal-up">
+        <h3 class="connect__card-title">Want to Be a Guest?</h3>
+        <p class="connect__card-copy">If you're a woman doing interesting work in supply chain or logistics, we'd love to hear your story.</p>
+
+        <form class="connect__form" id="guestForm" novalidate>
+          <label class="connect__field">
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your full name" required>
+          </label>
+
+          <label class="connect__field">
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@email.com" required>
+          </label>
+
+          <label class="connect__field">
+            <span>Tell us about you</span>
+            <textarea name="message" rows="3" placeholder="Your role, company, and what you'd love to talk about" required></textarea>
+          </label>
+
+          <button type="submit" class="btn btn--gold connect__submit">
+            <span>Request to Join</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="connect__hint">Opens your email app so you can send it straight to us.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="connect__bottom">
+      <div class="connect__email reveal-up">
+        <p class="eyebrow">Get in Touch</p>
+        <a href="mailto:ladiesleadershiplogistics@gmail.com" class="connect__email-link">ladiesleadershiplogistics@gmail.com</a>
+      </div>
+
+      <a href="#" class="whatsapp-btn reveal-up" id="whatsappLink">
+        <span class="whatsapp-btn__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.24-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.24.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.17 0-.44.06-.67.31-.23.24-.87.85-.87 2.08 0 1.23.89 2.41 1.02 2.58.12.16 1.76 2.69 4.27 3.77.6.26 1.06.41 1.43.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+        </span>
+        <span>💬 Join Our WhatsApp Community</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="siteFooter">
   <div class="section-inner footer__inner">
     <div class="footer__brand">
-      <img src="lll.png" alt="Ladies, Leadership & Logistics" class="footer__logo">
+      <div class="footer__logo-plate">
+        <img src="lll.png" alt="Ladies, Leadership & Logistics" class="footer__logo">
+      </div>
       <p class="footer__tag">Where Ambitious Women Meet Bold Industry Voices</p>
     </div>
 
